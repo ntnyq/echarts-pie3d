@@ -1,0 +1,83 @@
+{
+  "name": "echarts-pie3d",
+  "version": "0.0.0",
+  "description": "A 3D pie and donut chart extension for Apache ECharts, powered by ECharts GL.",
+  "keywords": [
+    "3d",
+    "donut",
+    "echarts",
+    "echarts-gl",
+    "pie3d",
+    "webgl"
+  ],
+  "homepage": "https://github.com/ntnyq/echarts-pie3d#readme",
+  "bugs": {
+    "url": "https://github.com/ntnyq/echarts-pie3d/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "ntnyq",
+    "email": "ntnyq13@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntnyq/echarts-pie3d.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint",
+    "play": "pnpm -C playground dev",
+    "play:build": "pnpm -C playground build",
+    "prepare": "husky",
+    "prepublishOnly": "pnpm run build",
+    "release": "run-s release:check release:version",
+    "release:check": "run-s format:check lint typecheck test",
+    "release:version": "bumpp",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit && pnpm -C playground typecheck"
+  },
+  "devDependencies": {
+    "@ntnyq/tsconfig": "^3.1.0",
+    "@types/node": "^26.6.2",
+    "bumpp": "^12.3.0",
+    "echarts": "5.6.0",
+    "echarts-gl": "2.0.9",
+    "husky": "^9.1.7",
+    "nano-staged": "^1.0.2",
+    "npm-run-all2": "^9.0.3",
+    "oxfmt": "^0.70.0",
+    "oxlint": "^1.85.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  },
+  "peerDependencies": {
+    "echarts": "~5.6.0",
+    "echarts-gl": "2.0.9"
+  },
+  "nano-staged": {
+    "*.{js,ts,mjs,tsx}": "oxlint --fix --no-error-on-unmatched-pattern",
+    "*": "oxfmt --no-error-on-unmatched-pattern"
+  },
+  "packageManager": "pnpm@12.6.0"
+}
