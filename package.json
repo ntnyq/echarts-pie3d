@@ -1,6 +1,6 @@
 {
   "name": "echarts-pie3d",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A 3D pie and donut chart extension for Apache ECharts, powered by ECharts GL.",
   "keywords": [
     "3d",
