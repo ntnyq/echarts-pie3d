@@ -6,6 +6,12 @@
       "echarts-pie3d": ["../src/index.ts"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "*.ts", "../src/adapter.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "*.ts",
+    "../src/adapter.d.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }
