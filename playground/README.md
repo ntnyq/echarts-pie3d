@@ -15,6 +15,17 @@ pnpm --dir playground preview
 
 The playground uses TypeScript 6 because `vue-tsc` currently depends on the JavaScript compiler API unavailable in TypeScript 7. The library keeps its own TypeScript version.
 
+## Controls
+
+The English interface exposes 29 settings in four collapsible groups:
+
+- **Geometry:** pie/donut shape, inner and outer radius, depth, start angle, slice gap, segments, and clockwise layout.
+- **View & lighting:** camera elevation and rotation, shading, opacity, main and ambient light intensity, and light direction.
+- **Labels:** visibility, position, font size, overlap avoidance, connector visibility and lengths, and percentage precision.
+- **Interaction:** legend, tooltips, hover highlighting, selection mode, and selected slice offset.
+
+Sliders display their current values and units. Controls that do not apply to the current configuration are disabled. Reducing the outer radius also limits the inner radius to keep the ring visible. Update data and Clear data keep the current settings; Reset restores all defaults, the original data, and chart interaction state.
+
 ## Structure
 
 - `src/App.vue`: application layout and feature composition.
@@ -25,6 +36,6 @@ The playground uses TypeScript 6 because `vue-tsc` currently depends on the Java
 - `src/types/playground.ts`: shared chart option and control types.
 - `uno.config.ts`: theme colors, font, and shared control shortcuts; component styling uses utilities.
 
-Controls use typed models and intent events. ECharts retains legend and selection state during ordinary option updates; resetting explicitly replaces the option. Chart instances stay outside Vue reactivity and are disposed when their component unmounts.
+Input controls use typed models; setting groups emit patches to the composable that owns the settings. ECharts retains legend and selection state during ordinary option updates; resetting explicitly replaces the option. Chart instances stay outside Vue reactivity and are disposed when their component unmounts.
 
 Vite and TypeScript resolve `echarts-pie3d` to the library source for development without a prior build. The package still declares the library and its ECharts peers explicitly. In development, `window.pie3DChart` exposes the active instance for inspecting native events and `dispatchAction`; it is removed on component unmount.

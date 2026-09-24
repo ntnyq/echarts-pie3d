@@ -35,7 +35,7 @@ const option: ComposeOption<
   series: [
     {
       type: 'pie3D',
-      name: '访问来源',
+      name: 'Traffic sources',
       center: ['50%', '50%'],
       radius: ['35%', '70%'], // [0, '70%'] for a solid pie
       depth: 24,
@@ -44,9 +44,9 @@ const option: ComposeOption<
       label: { formatter: '{b}: {d}%' },
       viewControl: { projection: 'orthographic', alpha: 35, beta: 0 },
       data: [
-        { id: 'search', name: '搜索', value: 420 },
-        { id: 'direct', name: '直接访问', value: 280 },
-        { id: 'other', name: '其他', value: 160 },
+        { id: 'search', name: 'Search', value: 420 },
+        { id: 'direct', name: 'Direct', value: 280 },
+        { id: 'other', name: 'Other', value: 160 },
       ],
     },
   ],
@@ -93,8 +93,8 @@ Keep stable item IDs and unique names when updating data; legend and ECharts sel
 chart.dispatchAction({ type: 'select', seriesIndex: 0, dataIndex: 1 })
 chart.dispatchAction({ type: 'unselect', seriesIndex: 0, dataIndex: 1 })
 chart.dispatchAction({ type: 'toggleSelect', seriesIndex: 0, dataIndex: 1 })
-chart.dispatchAction({ type: 'highlight', seriesIndex: 0, name: '搜索' })
-chart.dispatchAction({ type: 'downplay', seriesIndex: 0, name: '搜索' })
+chart.dispatchAction({ type: 'highlight', seriesIndex: 0, name: 'Search' })
+chart.dispatchAction({ type: 'downplay', seriesIndex: 0, name: 'Search' })
 ```
 
 ## Scope of the first release

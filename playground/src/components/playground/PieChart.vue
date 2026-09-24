@@ -9,6 +9,7 @@ const props = defineProps<{
 }>()
 
 const chartContainer = useTemplateRef<HTMLDivElement>('chartContainer')
+
 usePieChart(
   chartContainer,
   () => props.option,
@@ -21,6 +22,6 @@ usePieChart(
     ref="chartContainer"
     class="h-105 min-h-90 w-full sm:h-[min(58vw,540px)]"
     role="img"
-    aria-label="访问来源三维饼图，搜索、直接访问、社交媒体和其他来源"
+    aria-label="3D traffic sources chart: Search, Direct, Social, and Other"
   />
 </template>

@@ -4,10 +4,8 @@ import PieChart from './PieChart.vue'
 import PieControls from './PieControls.vue'
 
 const {
-  shape,
-  depth,
-  alpha,
-  beta,
+  settings,
+  updateSettings,
   option,
   resetKey,
   updateData,
@@ -17,23 +15,55 @@ const {
 </script>
 
 <template>
-  <PieControls
-    v-model:shape="shape"
-    v-model:depth="depth"
-    v-model:alpha="alpha"
-    v-model:beta="beta"
-    @update-data="updateData"
-    @clear-data="clearData"
-    @reset="reset"
-  />
-  <PieChart
-    :option="option"
-    :reset-key="resetKey"
-  />
+  <div
+    class="flex flex-wrap items-center justify-between gap-3 border-y border-divider py-4"
+  >
+    <p class="text-sm text-control">
+      Adjust the settings to explore your chart.
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <button
+        class="playground-button"
+        type="button"
+        @click="updateData"
+      >
+        Update data
+      </button>
+      <button
+        class="playground-button"
+        type="button"
+        @click="clearData"
+      >
+        Clear data
+      </button>
+      <button
+        class="playground-button"
+        type="button"
+        @click="reset"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+  <div class="grid items-start gap-6 py-4 lg:grid-cols-[260px_minmax(0,1fr)]">
+    <div class="min-w-0 lg:sticky lg:top-4 lg:col-start-2 lg:row-start-1">
+      <PieChart
+        :option="option"
+        :reset-key="resetKey"
+      />
+    </div>
+    <PieControls
+      :settings="settings"
+      @change="updateSettings"
+    />
+  </div>
   <footer
     class="flex flex-wrap justify-between gap-3 border-t border-divider pt-4.5 text-xs text-muted"
   >
     <code class="text-brand">type: 'pie3D'</code>
-    <span>点击图例过滤 · 点击扇区选中 / 取消 · 调整窗口自动重排</span>
+    <span
+      >Click the legend to filter · Click a slice to select · Resizes
+      automatically</span
+    >
   </footer>
 </template>

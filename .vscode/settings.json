@@ -16,6 +16,7 @@
     "ECHARTS",
     "esbuild",
     "lcov",
+    "nums",
     "oxfmt",
     "oxlint",
     "pnpm",
